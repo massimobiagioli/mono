@@ -32,10 +32,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SmartAgent.cs" />
+    <Compile Include="IRouteResolver.cs" />
+    <Compile Include="ListAllRouteResolver.cs" />
+    <Compile Include="RouteEntry.cs" />
+    <Compile Include="GetDocumentRouteResolver.cs" />
+    <Compile Include="SaveDocumentRouteResolver.cs" />
+    <Compile Include="DeleteDocumentRouteResolver.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Config\Routes.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Config\" />
+  </ItemGroup>
 </Project>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<routes>
+	<route 
+		key="listAll/" 
+		verb="GET"
+		clazz="SmartAgent.ListAllRouteResolver"/>
+	<route 
+		key="getDocument/" 
+		verb="GET"
+		clazz="SmartAgent.GetDocumentRouteResolver"/>
+	<route 
+		key="saveDocument/" 
+		verb="POST"
+		clazz="SmartAgent.SaveDocumentRouteResolver"/>
+	<route 
+		key="deleteDocument/" 
+		verb="DELETE"
+		clazz="SmartAgent.DeleteDocumentRouteResolver"/>
+</routes>
