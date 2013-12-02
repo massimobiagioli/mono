@@ -37,7 +37,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Net" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
+      <HintPath>Lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -55,8 +55,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Config\Routes.xml" />
+    <None Include="Lib\Newtonsoft.Json.dll" />
+    <None Include="Lib\Newtonsoft.Json.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Config\" />
+    <Folder Include="Lib\" />
   </ItemGroup>
 </Project>
