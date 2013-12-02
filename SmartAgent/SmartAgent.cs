@@ -1,12 +1,12 @@
 using System;
-using System.Net;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Reflection;
 using System.IO;
-using System.Threading;
-using System.Xml;
+using System.Reflection;
 using System.Text;
+using System.Threading;
+using System.Net;
+using System.Xml;
 
 namespace SmartAgent
 {
@@ -106,7 +106,8 @@ namespace SmartAgent
 				}
 
 				this.WriteRequestLog(url, context);
-				this.HandleJsonpResponse(context, (int)HttpStatusCode.OK, this.DispatchRequest(url, context));
+				RouteResolverResponse response = this.DispatchRequest(url, context);
+				this.HandleJsonpResponse(context, response.Status, response.Message);
 			}
 			catch (Exception e)
 			{
@@ -145,11 +146,11 @@ namespace SmartAgent
 			}
 		}
 		
-		private string DispatchRequest(string url, HttpListenerContext context)
+		private RouteResolverResponse DispatchRequest(string url, HttpListenerContext context)
 		{            
 			IRouteResolver resolver = (IRouteResolver)Assembly.GetExecutingAssembly().CreateInstance(routes[url].Clazz);
 
-			return resolver.SendJson(context);
+			return resolver.SendResponse(context);
 		}
 
 		private void WriteRequestLog(string url, HttpListenerContext context)

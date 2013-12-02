@@ -10,9 +10,9 @@ namespace SmartAgent
 		{
 		}
 
-		public string SendJson(HttpListenerContext context)
+		public RouteResolverResponse SendResponse(HttpListenerContext context)
 		{
-			return JsonConvert.SerializeObject("ok");
+			return new RouteResolverResponse((int)HttpStatusCode.OK, JsonConvert.SerializeObject("ok"));
 		}
 	}
 }

@@ -5,6 +5,6 @@ namespace SmartAgent
 {
 	public interface IRouteResolver
 	{
-		string SendJson(HttpListenerContext context);
+		RouteResolverResponse SendResponse(HttpListenerContext context);
 	}
 }
