@@ -16,7 +16,7 @@ namespace SmartAgent
 
 		public RouteResolverResponse SendResponse(HttpListenerContext context)
 		{
-			String path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+			String path = SmartAgentHelper.GetMyDocumentsPath();
 			List<string> filez = new List<string>(Directory.EnumerateFiles(path, DOC_FILTER));
 
 			return new RouteResolverResponse((int)HttpStatusCode.OK, JsonConvert.SerializeObject(filez));

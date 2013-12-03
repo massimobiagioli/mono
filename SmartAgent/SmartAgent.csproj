@@ -39,6 +39,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="SaveDocumentRouteResolver.cs" />
     <Compile Include="DeleteDocumentRouteResolver.cs" />
     <Compile Include="RouteResolverResponse.cs" />
+    <Compile Include="SmartAgentHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
