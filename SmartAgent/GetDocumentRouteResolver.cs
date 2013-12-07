@@ -8,6 +8,7 @@ namespace SmartAgent
 	public class GetDocumentRouteResolver : IRouteResolver
 	{
 		private const string ERR_MISSING_PARAMETER_FILENAME = "Parametro fileName mancante";
+		private const string KEY_FILENAME = "fileName";
 
 		public GetDocumentRouteResolver()
 		{
@@ -16,19 +17,27 @@ namespace SmartAgent
 		public RouteResolverResponse SendResponse(HttpListenerContext context)
 		{
 			RouteResolverResponse response = new RouteResolverResponse();
-			String path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-			string fileName = context.Request.QueryString.Get("fileName");
+			String path = SmartAgentHelper.GetMyDocumentsPath();
+			string fileName = context.Request.QueryString.Get(KEY_FILENAME);
 
 			if (null == fileName) 
 			{
 				response.Status = 404;
 				response.Message = JsonConvert.SerializeObject(ERR_MISSING_PARAMETER_FILENAME);
+				return response;
 			} 
-			else 
+
+			try
 			{
-				string encoded = Convert.ToBase64String(File.ReadAllBytes(path + Path.DirectorySeparatorChar + fileName));
+				string fullPath = path + Path.DirectorySeparatorChar + fileName;
+				string encoded = Convert.ToBase64String(File.ReadAllBytes(fullPath));
 				response.Status = (int)HttpStatusCode.OK;
 				response.Message = JsonConvert.SerializeObject(encoded);
+			}
+			catch (Exception e) 
+			{
+				response.Status = 500;
+				response.Message = JsonConvert.SerializeObject(e.Message);
 			}
 
 			return response;
