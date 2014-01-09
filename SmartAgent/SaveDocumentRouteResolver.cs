@@ -26,14 +26,14 @@ namespace SmartAgent
 			string fileName = nvc.Get(KEY_FILENAME);
 			string content = nvc.Get(KEY_CONTENT);
 
-			if (null == fileName) 
+			if (String.IsNullOrEmpty(fileName)) 
 			{
 				response.Status = 404;
 				response.Message = JsonConvert.SerializeObject(ERR_MISSING_PARAMETER_FILENAME);
 				return response;
 			} 
 
-			if (null == content) 
+			if (String.IsNullOrEmpty(content)) 
 			{
 				response.Status = 404;
 				response.Message = JsonConvert.SerializeObject(ERR_MISSING_PARAMETER_CONTENT);

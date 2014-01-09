@@ -23,7 +23,7 @@ namespace SmartAgent
 			NameValueCollection nvc = SmartAgentHelper.ParseQueryString(context);
 			string fileName = nvc.Get(KEY_FILENAME);
 
-			if (null == fileName) 
+			if (String.IsNullOrEmpty(fileName)) 
 			{
 				response.Status = 404;
 				response.Message = JsonConvert.SerializeObject(ERR_MISSING_PARAMETER_FILENAME);

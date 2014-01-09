@@ -20,7 +20,7 @@ namespace SmartAgent
 			String path = SmartAgentHelper.GetMyDocumentsPath();
 			string fileName = context.Request.QueryString.Get(KEY_FILENAME);
 
-			if (null == fileName) 
+			if (String.IsNullOrEmpty(fileName)) 
 			{
 				response.Status = 404;
 				response.Message = JsonConvert.SerializeObject(ERR_MISSING_PARAMETER_FILENAME);
