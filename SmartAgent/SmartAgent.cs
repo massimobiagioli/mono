@@ -139,7 +139,9 @@ namespace SmartAgent
 
 			byte[] bytes = System.Text.Encoding.UTF8.GetBytes(toPrint);
 			context.Response.ContentLength64 = bytes.Length;
+			context.Response.ContentType = "application/javascript";
 			context.Response.StatusCode = statusCode;
+			context.Response.AddHeader("Access-Control-Allow-Origin", "*");
 			using (Stream s = context.Response.OutputStream)
 			{
 				s.Write(bytes, 0, bytes.Length);
