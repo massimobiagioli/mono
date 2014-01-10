@@ -96,6 +96,12 @@ namespace SmartAgent
 
 			try
 			{    
+				if (context.Request.HttpMethod.Equals("OPTIONS"))
+				{
+					this.HandleJsonpResponse(context, 200, "OK");
+					return;
+				}
+
 				String url = this.ExtractUrl(context);
 
 				if (!this.routes[url].Verb.Equals(context.Request.HttpMethod))
@@ -142,6 +148,7 @@ namespace SmartAgent
 			context.Response.ContentType = "application/javascript";
 			context.Response.StatusCode = statusCode;
 			context.Response.AddHeader("Access-Control-Allow-Origin", "*");
+			context.Response.AddHeader("Access-Control-Allow-Methods", "HEAD,GET,PUT,DELETE,OPTIONS");
 			using (Stream s = context.Response.OutputStream)
 			{
 				s.Write(bytes, 0, bytes.Length);
